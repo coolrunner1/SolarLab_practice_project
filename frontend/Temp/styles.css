@@ -1,0 +1,495 @@
+:root {
+	--theme-name: "light";
+	--dash-img-size: 50px;
+}
+
+:root.light {
+	--color-base-bg: rgb(240, 240, 240);
+	--color-base-text: rgb(18, 18, 18);
+	--svg-fill: #000000;
+	--right-container-color: #e2e8f0;
+	--header-color: #ffffff;
+	--theme-name: "light";
+	--search-bar-bg: #e2e8f0;
+	--input-color: #181818;
+	--sidebar-bg: #1992d4;
+	--project-color: #636363;
+	--github-icon: url(./images/github.svg);
+	--preview-icon: url(./images/eye-outline.svg);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+	  --theme-name: "dark";
+	}
+	
+}
+
+@media screen{
+	#main-container {
+	--sidebar-size: clamp(10px, 30%, 300px);
+	}
+	#dashboard-img + div {
+		--dash-text-width: clamp(0px, 10%, 50px);
+		--dash-text-padding: 10px;
+	}
+	#header{
+		--name-size: 120px;
+		--second-grid-size: clamp(30px, 10%, 45px) auto repeat(3, clamp(65px, 10%, 85px));
+	}
+	#main-content-container{
+		--content-columns: 2fr 0.8fr;
+		--content-rows: auto;
+	}
+	button{
+		--button-font-size: 16px;
+	}
+	#projects-container{
+		--content-columns: 1fr 1fr;
+		--content-rows: repeat(5, 1fr);
+	}
+}
+
+@media screen and (max-width: 735px){
+	#main-container {
+	--sidebar-size: clamp(55px, 10%, 300px);
+	}
+	#dashboard-img + div {
+		--dash-text-width: 0%;
+		--dash-text-padding: 0;
+		position: absolute;
+		font-size: 0;
+	}
+	#dashboard{
+		color:#1992d4;
+		--dash-img-size: 40px;
+	}
+	#header{
+		--second-grid-size: auto repeat(3, clamp(65px, 10%, 85px));
+	}
+	#first-header{
+		--name-size: 0;
+	}
+	#first-header > div{
+		font-size: 0px;
+	}
+	#sidebar-icons > div{
+		font-size: 0px;
+	}
+	#avatar.second-avatar{
+		height: 0;
+		width: 0;
+		background-image: none;
+		position: absolute;
+	}
+	h2{
+		font-size: 13px;
+	}
+	h4{
+		font-size: 13px;
+	}
+	h5{
+		font-size: 12px;
+	}
+	button{
+		--button-font-size: 14px;
+	}
+	#main-content-container{
+		--content-columns: auto;
+		--content-rows: auto auto;
+	}
+	#projects-container{
+		--content-columns: 1fr;
+		--content-rows: repeat(5, 1fr);
+	}
+}
+
+@media screen and (min-width: 1400px){
+	#projects-container{
+		--content-columns: repeat(3, 1fr);
+		--content-rows: repeat(5, 1fr);
+	}
+}
+
+@media screen and (min-width: 2300px){
+	#projects-container{
+		--content-columns: repeat(4, 1fr);
+		--content-rows: repeat(5, 1fr);
+	}
+}
+
+:root.dark {
+	--color-base-bg: rgb(18, 18, 18);
+	--color-base-text: rgb(240, 240, 240);
+	--svg-fill: #ffffff;
+	--right-container-color: #232327;
+	--header-color: #181818;
+	--theme-name: "dark";
+	--search-bar-bg: #303134;
+	--input-color: rgb(240, 240, 240);
+	--sidebar-bg: #3882f6;
+	--project-color:#919191;
+	--github-icon: url(./images/github-dark.svg);
+	--preview-icon: url(./images/eye-outline-dark.svg);
+}
+  
+body {
+	background-color: var(--color-base-bg);
+	color: var(--color-base-text);
+	padding: 10px;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  }
+  
+  .container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  p {
+	font-size: 1.5rem;
+  }
+  
+  
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+div {
+	position: relative;
+    z-index: 99;
+}
+
+button:hover {
+	background-color: #969797;
+}
+
+a:hover > svg > path, #first-header > svg:hover > path{
+	fill: #969797;
+}
+
+#header {
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-weight: bolder;
+	font-size: 20px;
+	display: grid;
+	gap: 15px;
+	background-color: var(--header-color);
+	padding: 10px;
+}
+
+#first-header {
+	display: grid;
+	grid-template-columns: clamp(30px, 10%, 45px) auto repeat(3, clamp(30px, 10%, 45px)) var(--name-size);
+	gap: 15px;
+}
+#second-header {
+	display: grid;
+	grid-template-columns: var(--second-grid-size);
+	gap: 1vw;
+}
+
+h1, h2, h3, h4, h5{
+	padding: 0;
+	margin: 0;
+}
+
+#main-container {
+	height: 100%;
+	min-height: 100vh;
+	display: grid;
+	grid-template-columns: var(--sidebar-size) auto;
+	grid-template-rows: repeat(2, 100%);
+}
+
+#sidebar {
+	background-color: var(--sidebar-bg);
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #ffffff;
+	
+}
+
+.sidebar-icon{
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 30px;
+	width: auto;
+}
+
+#home-icon{
+	background-image: url(./images/home-icon.svg);
+}
+
+#profile-icon{
+	background-image: url(./images/profile-icon.svg);
+}
+
+#messages-icon{
+	background-image: url(./images/messages-icon.svg);
+}
+
+#history-icon{
+	background-image: url(./images/history-icon.svg);
+}
+
+#tasks-icon{
+	background-image: url(./images/tasks-icon.svg);
+}
+
+#communities-icon{
+	background-image: url(./images/communities.svg);
+}
+
+#settings-icon{
+	background-image: url(./images/settings-icon.svg);
+}
+
+#support-icon{
+	background-image: url(./images/support-icon.svg);
+}
+
+#privacy-icon{
+	background-image: url(./images/privacy-icon.svg);
+}
+
+#right-container {
+	height: 100%;
+	min-height: 100vh;
+	background-color: var(--right-container-color);
+}
+
+button, input {
+	display: flex;
+	justify-content: center;
+	padding: 10px 10px;
+	margin: 0 25px;
+	width: 100%;
+	/*max-width: 50px;*/
+	height: 50px;
+	color: var(--header-color);
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-weight: bolder;
+	font-size: var(--button-font-size);
+	background-color: transparent;
+	border-style: solid;
+	border-color: transparent;
+	border-radius: 10px;
+	margin: 0;
+	font-family: arial;
+}
+
+input{
+	color: var(--input-color);
+}
+
+#dashboard {
+	display: flex;
+	flex-direction: row;
+	padding: 8px;
+}
+
+#dashboard-img {
+	background-image: url(./images/dash.svg);
+	width: var(--dash-img-size);
+	height: var(--dash-img-size);
+}
+
+#dashboard-img + div {
+	padding: var(--dash-text-padding);
+	height: auto;
+	width: var(--dash-text-width);
+}
+
+svg > path {
+	fill: var(--svg-fill);
+}
+
+#search-bar {
+	margin: auto;
+	padding: 0;
+	max-height: 30px;
+	background-color: var(--search-bar-bg);
+}
+
+#theme {
+	width:10vw;
+    height:10vw;
+	max-width: 50px;
+	max-height: 50px;
+	padding: 3px;
+}
+
+#theme > div{
+	height: 100%;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#avatar, .trending-icons{
+	background-image: url(https://avatars.githubusercontent.com/u/153802775?v=4);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width:10vw;
+    height:10vw;
+	max-width: 50px;
+	max-height: 50px;
+	border-radius: 100px;
+}
+
+.header-text{
+	padding: 10px 0;
+	text-align: center;
+}
+
+#sidebar-icons{
+	display: grid;
+	padding: 12px;
+	gap: 10px;
+	grid-template-columns: clamp(30px, 10%, 45px) auto;
+	grid-template-rows: repeat(6, 50px) 75px repeat(3, 50px);
+	padding-bottom: 0;
+}
+
+.second-avatar{
+	max-width: 60px;
+	max-height: 60px;
+}
+
+.buttons-head {
+	background-color: #3882f6;
+	border-color: #3882f6;
+	padding: 7px;
+	max-height: 35px;
+	border-radius: 60px;
+}
+
+.buttons-head:hover {
+	background-color: #005ff7;
+	border-color: #005ff7;
+}
+
+#main-content-container{
+	display: grid;
+	grid-template-columns: var(--content-columns);
+	grid-template-rows: var(--content-rows);
+	text-align: left;
+	padding: 10px;
+	gap: 5px;
+}
+
+#projects-container{
+	display: grid;
+	gap: 1vw;
+	grid-template-columns: var(--content-columns);
+	grid-template-rows: var(--content-rows);
+}
+
+.project-entries{
+	display: grid;
+	grid-template-columns: 8px auto;
+	background-color: var(--header-color);
+	border: transparent;
+	border-color: var(--header-color);
+	border-left-color: #f0b429;
+	border-radius: 10px;
+	margin: 5px;
+	box-shadow: 2px 2px 0 0 #30313411;
+}
+
+.yellow-stripe{
+	background-color: #f0b429;
+	border: transparent;
+	border-radius: 50px 0 0 50px;
+}
+
+#announcements, #trending{
+	background-color: var(--header-color);
+	padding: 10px;
+	margin: 5px;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, 100px);
+	border: transparent;
+	border-radius: 10px;
+	box-shadow: 2px 2px 0 0 #30313411;
+}
+
+.announcement{
+	margin: 10px;
+	border-bottom: 1px solid var(--right-container-color);
+}
+
+.announcement > h4{
+	margin-bottom: 8px;
+}
+
+.last{
+	border: none;
+}
+
+.project-content{
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 1fr 1fr auto 1fr;
+	margin: 10px;
+}
+
+.trending-entry > div > h5, .announcement > h5, .project-content > h5{
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	color: var(--project-color);
+}
+
+.project-icons{
+	display: grid;
+	gap: 5px;
+	grid-template-rows: 30px;
+	grid-template-columns: auto repeat(2, 30px);
+}
+
+.main-content-icons, .trending-icons{
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 30px;
+	width: 30px;
+}
+
+.live-preview{
+	background-image: var(--preview-icon);
+}
+
+.github-page{
+	background-image: var(--github-icon);
+}
+
+.trending-icons{
+	min-width: 30px;
+	min-height: 30px;
+}
+
+#trending-icon-1{
+	background-image: url("./images/react.svg");
+}
+
+#trending-icon-2{
+	background-image: url("./images/docker.svg");
+}
+
+#trending-icon-3{
+	background-image: url("./images/webpack.svg");
+}
+
+#trending-icon-4{
+	background-image: none;
+}
+
+.trending-entry{
+	display: flex;
+	direction: row;
+	gap: 5px;
+	margin: 15px;
+}

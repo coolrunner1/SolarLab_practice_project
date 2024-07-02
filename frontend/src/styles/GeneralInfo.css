@@ -1,0 +1,69 @@
+#title {
+    text-align: center;
+    font-family: arial, bold;
+    color: rgb(249, 243, 223);
+  }
+  
+  #description {
+    text-align: center;
+    color: rgb(249, 243, 223);
+    font-family: arial;
+    font-style: italic;
+  }
+  
+  #survey-form {
+    background-color: #c58bf7bc;
+    border-style: solid;
+    border-color: #eb67e8bc;
+    border-radius: 20px;
+    width: 60%;
+    max-width: 500px;
+    height: auto;
+    padding: 25px;
+    margin: auto;
+    font-family: arial;
+    font-size: 20px;
+    font-style: bold;
+    color: rgb(249, 243, 223);
+  }
+  
+  label {
+    display: block;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  input, select, textarea, button {
+    display: block;
+    padding: 15px;
+    width: 100%;
+    max-width: 250px;
+    background-color: #ffffff90;
+    border-style: dotted;
+    border-radius: 10px;
+    margin: auto;
+    font-family: arial;
+    font-size: 15px;
+  }
+  
+  button {
+    max-width: 130px;
+    padding: 10px;
+  }
+  
+  .radios, .checkboxes {
+    display: inline;
+    margin: auto, 10px;
+    width: auto;
+  }
+  
+  .check {
+    text-align: right;
+    font-size: 15px; 
+    border-radius: 5px;
+  }
+  
+  #myboxes {
+    margin: auto;
+    max-width: 300px;
+  }
