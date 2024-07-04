@@ -1,9 +1,6 @@
 :root {
 	--theme-name: "light";
 	--dash-img-size: 50px;
-}
-
-:root.light {
 	--color-base-bg: rgb(240, 240, 240);
 	--color-base-text: rgb(18, 18, 18);
 	--svg-fill: #000000;
@@ -20,7 +17,18 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-	  --theme-name: "dark";
+		--color-base-bg: rgb(18, 18, 18);
+		--color-base-text: rgb(240, 240, 240);
+		--svg-fill: #ffffff;
+		--right-container-color: #232327;
+		--header-color: #181818;
+		--theme-name: "dark";
+		--search-bar-bg: #303134;
+		--input-color: rgb(240, 240, 240);
+		--sidebar-bg: #3882f6;
+		--project-color:#919191;
+		--github-icon: url(./images/github-dark.svg);
+		--preview-icon: url(./images/eye-outline-dark.svg);
 	}
 	
 }
@@ -184,9 +192,16 @@ a:hover > svg > path, #first-header > svg:hover > path{
 
 #first-header {
 	display: grid;
-	grid-template-columns: clamp(30px, 10%, 45px) auto repeat(3, clamp(30px, 10%, 45px)) var(--name-size);
+	grid-template-columns: auto repeat(2, clamp(30px, 10%, 45px)) var(--name-size);
 	gap: 15px;
 }
+
+#first-header > div {
+	display: grid;
+	justify-content: left;
+	grid-template-columns: auto clamp(30px, 10%, 45px);
+}
+
 #second-header {
 	display: grid;
 	grid-template-columns: var(--second-grid-size);
@@ -198,70 +213,6 @@ h1, h2, h3, h4, h5{
 	margin: 0;
 }
 
-#main-container {
-	height: 100%;
-	min-height: 100vh;
-	display: grid;
-	grid-template-columns: var(--sidebar-size) auto;
-	grid-template-rows: repeat(2, 100%);
-}
-
-#sidebar {
-	background-color: var(--sidebar-bg);
-	font-size: 1.5em;
-	font-weight: bold;
-	color: #ffffff;
-	
-}
-
-.sidebar-icon{
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 30px;
-	width: auto;
-}
-
-#home-icon{
-	background-image: url(./images/home-icon.svg);
-}
-
-#profile-icon{
-	background-image: url(./images/profile-icon.svg);
-}
-
-#messages-icon{
-	background-image: url(./images/messages-icon.svg);
-}
-
-#history-icon{
-	background-image: url(./images/history-icon.svg);
-}
-
-#tasks-icon{
-	background-image: url(./images/tasks-icon.svg);
-}
-
-#communities-icon{
-	background-image: url(./images/communities.svg);
-}
-
-#settings-icon{
-	background-image: url(./images/settings-icon.svg);
-}
-
-#support-icon{
-	background-image: url(./images/support-icon.svg);
-}
-
-#privacy-icon{
-	background-image: url(./images/privacy-icon.svg);
-}
-
-#right-container {
-	height: 100%;
-	min-height: 100vh;
-	background-color: var(--right-container-color);
-}
 
 button, input {
 	display: flex;
@@ -313,6 +264,7 @@ svg > path {
 	margin: auto;
 	padding: 0;
 	max-height: 30px;
+	max-width: 900px;
 	background-color: var(--search-bar-bg);
 }
 
