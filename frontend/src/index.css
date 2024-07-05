@@ -185,11 +185,7 @@ a:hover > svg > path, #first-header > svg:hover > path{
 	padding: 10px;
 }
 
-#first-header {
-	display: grid;
-	grid-template-columns: clamp(30px, 10%, 45px) auto repeat(3, clamp(30px, 10%, 45px)) var(--name-size);
-	gap: 15px;
-}
+
 #second-header {
 	display: grid;
 	grid-template-columns: var(--second-grid-size);
