@@ -11,11 +11,27 @@ namespace api.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Author",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Author", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Book",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    AuthorID = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Genre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
@@ -25,13 +41,22 @@ namespace api.Migrations
                     epub = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     txt = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     pdf = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    docx = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    popularity = table.Column<int>(type: "int", nullable: false)
+                    docx = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Book", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Book_Author_AuthorID",
+                        column: x => x.AuthorID,
+                        principalTable: "Author",
+                        principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Book_AuthorID",
+                table: "Book",
+                column: "AuthorID");
         }
 
         /// <inheritdoc />
@@ -39,6 +64,9 @@ namespace api.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Book");
+
+            migrationBuilder.DropTable(
+                name: "Author");
         }
     }
 }

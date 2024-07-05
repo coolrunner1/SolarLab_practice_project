@@ -8,6 +8,10 @@ namespace api.Models
 {
     public class Author
     {
-        //public Book BookID { get; set; } = new Book();
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
+        public List<Book> BookID { get; set; } = new List<Book>();
     }
 }

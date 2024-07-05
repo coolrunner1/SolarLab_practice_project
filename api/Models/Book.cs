@@ -8,6 +8,7 @@ namespace api.Models
     public class Book
     {
         public int Id { get; set; }
+        public int? AuthorID {get; set;}
         public string Name { get; set; } = string.Empty;
         public string Genre { get; set; } = string.Empty;
         public int Year { get; set; }
@@ -18,6 +19,6 @@ namespace api.Models
         public string txt { get; set; } = string.Empty;
         public string pdf { get; set; } = string.Empty;
         public string docx { get; set; } = string.Empty;
-        public int popularity { get; set; }
+        public Author? Author {get; set;}
     }
 }
