@@ -7,12 +7,6 @@ function MainPage(){
         <>
         <div id="main-content-container">
                     <div>
-                        <h2>Книги</h2>
-                        <div id="books-container">
-                            <BookEntry/>
-                        </div>
-                    </div>
-                    <div>
                         <div>
                             <h2>Анонсы</h2>
                             <div id="announcements">
@@ -61,6 +55,13 @@ function MainPage(){
                                     </div>
                                 </div>
                             </div>
+                            
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Книги</h2>
+                        <div id="books-container">
+                            <BookEntry/>
                         </div>
                     </div>
                 </div>
