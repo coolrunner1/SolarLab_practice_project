@@ -1,84 +1,20 @@
 import { useState } from 'react'
 import '../styles/MainPage.css'
+import BookEntry from '../components/BookEntry.jsx'
 
 function MainPage(){
     return(
         <>
         <div id="main-content-container">
                     <div>
-                        <h2>Your projects</h2>
-                        <div id="projects-container">
-                            <div class="project-entries">
-                                <div class="yellow-stripe"></div>
-                                <div class="project-content">
-                                    <h4>Infernal Chaos</h4>
-                                    <h5>My university project under GPL-3 license. Top-down 2d shooter.</h5>
-                                    <div></div>
-                                    <div class="project-icons">
-                                        <div></div>
-                                        <a href="" title="Release page (WIP)"><div class="main-content-icons live-preview"></div></a>
-                                        <a href="https://github.com/coolrunner1/Infernal_Chaos" title="Infernal Chaos Github page"><div class="main-content-icons github-page"></div></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-entries">
-                                <div class="yellow-stripe"></div>
-                                <div class="project-content">
-                                    <h4>Etch-a-Sketch</h4>
-                                    <h5>Small drawing utility written in JavaScript.</h5>
-                                    <div></div>
-                                    <div class="project-icons">
-                                        <div></div>
-                                        <a href="https://coolrunner1.github.io/etch-a-sketch" title="Live preview"><div class="main-content-icons live-preview"></div></a>
-                                        <a href="https://github.com/coolrunner1/etch-a-sketch" title="Etch-a-Sketch Github page"><div class="main-content-icons github-page"></div></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-entries">
-                                <div class="yellow-stripe"></div>
-                                <div class="project-content">
-                                    <h4>Sign-up form</h4>
-                                    <h5>Simple sign-up form. Alas, slightly broken.</h5>
-                                    <div></div>
-                                    <div class="project-icons">
-                                        <div></div>
-                                        <a href="https://coolrunner1.github.io/sign-up-form" title="Live preview"><div class="main-content-icons live-preview"></div></a>
-                                        <a href="https://github.com/coolrunner1/sign-up-form" title="Sign-up form Github page"><div class="main-content-icons github-page"></div></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-entries">
-                                <div class="yellow-stripe"></div>
-                                <div class="project-content">
-                                    <h4>Survey form</h4>
-                                    <h5>Survey form for the freeCodeCamp.</h5>
-                                    <div></div>
-                                    <div class="project-icons">
-                                        <div></div>
-                                        <a href="https://coolrunner1.github.io/a-survey-form-project" title="Live preview"><div class="main-content-icons live-preview"></div></a>
-                                        <a href="https://github.com/coolrunner1/a-survey-form-project" title="Infernal Chaos Github page"><div class="main-content-icons github-page"></div></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-entries">
-                                <div class="yellow-stripe"></div>
-                                <div class="project-content">
-                                    <h4>Landing Page</h4>
-                                    <h5>My first webpage for the Odin Project.</h5>
-                                    <div></div>
-                                    <div class="project-icons">
-                                        <div></div>
-                                        <a href="https://coolrunner1.github.io/landing-page" title="Live preview"><div class="main-content-icons live-preview"></div></a>
-                                        <a href="https://github.com/coolrunner1/landing-page" title="Landing page Github page"><div class="main-content-icons github-page"></div></a>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <h2>Книги</h2>
+                        <div id="books-container">
+                            <BookEntry/>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <h2>Announcements</h2>
+                            <h2>Анонсы</h2>
                             <div id="announcements">
                                 <div class="announcement">
                                     <h4>React JS</h4>
@@ -93,7 +29,7 @@ function MainPage(){
                                     <h5>A MySQL project is coming to my Github soon!</h5>
                                 </div>
                             </div>
-                            <h2>Trending</h2>
+                            <h2>Авторы недели</h2>
                             <div id="trending">
                                 <div class="trending-entry">
                                     <div class="trending-icons" id="trending-icon-1"></div>
