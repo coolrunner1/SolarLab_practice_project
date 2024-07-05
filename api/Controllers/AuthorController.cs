@@ -6,6 +6,8 @@ using api.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using api.Dtos.Author;
+using api.Mappers;
 
 namespace api.Controllers
 {
@@ -22,7 +24,8 @@ namespace api.Controllers
 
         [HttpGet]
         public IActionResult GetAll(){
-            var authors=_context.Author.ToList();
+            var authors=_context.Author.ToList()
+            .Select(c => c.ToAuthorDto());
             return Ok(authors);
         }
 
@@ -34,7 +37,7 @@ namespace api.Controllers
             {
                 return NotFound();
             }
-            return Ok(author);
+            return Ok(author.ToAuthorDto());
         }
     }
 }
