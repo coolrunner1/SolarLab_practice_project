@@ -20,5 +20,13 @@ namespace api.Mappers
                 BookID = authorModel.BookID.Select(c => c.ToBookDto()).ToList()
             };
         }
+        public static Author ToAuthorFromCreateDto(this CreateAuthorRequestDto authorDto){
+            return new Author{
+                Name=authorDto.Name,
+                Description=authorDto.Description,
+                Image=authorDto.Image
+                //Country
+            };
+        }
     }
 }

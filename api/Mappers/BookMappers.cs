@@ -27,5 +27,17 @@ namespace api.Mappers
                 docx=bookModel.docx
             };
         }
+
+        public static Book ToBookFromCreateDto(this CreateBookRequestDto bookDto){
+            return new Book{
+                AuthorID=bookDto.AuthorID,
+                Name=bookDto.Name,
+                Genre=bookDto.Genre,
+                Year=bookDto.Year,
+                Description=bookDto.Description,
+                Image=bookDto.Image,
+                Language=bookDto.Language
+            };
+        }
     }
 }

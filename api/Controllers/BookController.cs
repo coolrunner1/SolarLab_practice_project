@@ -40,8 +40,14 @@ namespace api.Controllers
             return Ok(book.ToBookDto());
         }
 
-        //[HttpPost]
+        [HttpPost]
         
-        //public IActionResult Create([FromBody] CreateBookRequest book)
+        public IActionResult Create([FromBody] CreateBookRequestDto bookDto)
+        {
+            var bookModel=bookDto.ToBookFromCreateDto();
+            _context.Book.Add(bookModel);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById), new {id=bookModel.Id}, bookModel.ToBookDto());
+        }
     }
 }

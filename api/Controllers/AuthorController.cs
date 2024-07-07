@@ -39,5 +39,15 @@ namespace api.Controllers
             }
             return Ok(author.ToAuthorDto());
         }
+
+        [HttpPost]
+        
+        public IActionResult Create([FromBody] CreateAuthorRequestDto authorDto)
+        {
+            var authorModel=authorDto.ToAuthorFromCreateDto();
+            _context.Author.Add(authorModel);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById), new {id=authorModel.Id}, authorModel.ToAuthorDto());
+        }
     }
 }
