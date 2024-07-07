@@ -17,6 +17,7 @@ namespace api.Mappers
                 Name=authorModel.Name,
                 Description=authorModel.Description,
                 Image=authorModel.Image,
+                Country=authorModel.Country,
                 BookID = authorModel.BookID.Select(c => c.ToBookDto()).ToList()
             };
         }
@@ -24,8 +25,8 @@ namespace api.Mappers
             return new Author{
                 Name=authorDto.Name,
                 Description=authorDto.Description,
-                Image=authorDto.Image
-                //Country
+                Image=authorDto.Image,
+                Country=authorDto.Country
             };
         }
     }
