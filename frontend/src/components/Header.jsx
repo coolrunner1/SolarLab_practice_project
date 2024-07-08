@@ -12,17 +12,17 @@ function Header(){
                     </div>
                     <button id="theme"></button>
                     <div id="avatar"></div>
-                    <div class="header-text">coolrunner1</div>
+                    <div className="header-text">coolrunner1</div>
                 </div>
                 <div id="second-header">
-                    <div id="avatar" class="second-avatar"></div>
+                    <div id="avatar" className="second-avatar"></div>
                     <div>
                         <h5>Hi there,</h5>
                         <h2>coolrunner1</h2>
                     </div>
-                    <button class="buttons-head">New</button>
-                    <button class="buttons-head">Upload</button>
-                    <button class="buttons-head">Share</button>
+                    <button className="buttons-head">New</button>
+                    <button className="buttons-head">Upload</button>
+                    <button className="buttons-head">Share</button>
                 </div>
             </div>
         </>
