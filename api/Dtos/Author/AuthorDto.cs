@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Book;
 
-namespace api.Models
+namespace api.Dtos.Author
 {
-    public class Author
+    public class AuthorDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Image { get; set; } = string.Empty;
         public string Country { get; set; } = string.Empty;
-        public List<Book> BookID { get; set; } = new List<Book>();
+        [AllowNull]
+        public List<BookDto> BookID { get; set; }
     }
 }

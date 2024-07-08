@@ -1,18 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
-namespace api.Models
+namespace api.Dtos.Author
 {
-    public class Author
+    public class CreateAuthorRequestDto
     {
-        public int Id { get; set; }
+        [Required]
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Image { get; set; } = string.Empty;
         public string Country { get; set; } = string.Empty;
-        public List<Book> BookID { get; set; } = new List<Book>();
     }
 }

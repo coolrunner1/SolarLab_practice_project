@@ -6,6 +6,8 @@ using api.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using api.Dtos.Book;
+using api.Mappers;
 
 namespace api.Controllers
 {
@@ -22,7 +24,8 @@ namespace api.Controllers
 
         [HttpGet]
         public IActionResult GetAll(){
-            var books=_context.Book.ToList();
+            var books=_context.Book.ToList()
+            .Select(s => s.ToBookDto());;
             return Ok(books);
         }
 
@@ -34,11 +37,17 @@ namespace api.Controllers
             {
                 return NotFound();
             }
-            return Ok(book);
+            return Ok(book.ToBookDto());
         }
 
-        //[HttpPost]
+        [HttpPost]
         
-        //public IActionResult Create([FromBody] CreateBookRequest book)
+        public IActionResult Create([FromBody] CreateBookRequestDto bookDto)
+        {
+            var bookModel=bookDto.ToBookFromCreateDto();
+            _context.Book.Add(bookModel);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById), new {id=bookModel.Id}, bookModel.ToBookDto());
+        }
     }
 }
