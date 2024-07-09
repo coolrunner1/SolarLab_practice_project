@@ -36,7 +36,11 @@ namespace api.Mappers
                 Year=bookDto.Year,
                 Description=bookDto.Description,
                 Image=bookDto.Image,
-                Language=bookDto.Language
+                Language=bookDto.Language,
+                epub=bookDto.epub,
+                txt=bookDto.txt,
+                pdf=bookDto.pdf,
+                docx=bookDto.docx
             };
         }
     }
