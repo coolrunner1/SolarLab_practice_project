@@ -184,7 +184,7 @@ a:hover > svg > path, #first-header > svg:hover > path{
 
 #first-header {
 	display: grid;
-	grid-template-columns: auto repeat(2, clamp(30px, 10%, 45px)) var(--name-size);
+	grid-template-columns: auto /*repeat(2, */clamp(30px, 10%, 45px)/*) var(--name-size)*/;
 	gap: 20px;
 }
 

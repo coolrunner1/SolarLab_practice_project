@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using api.Dtos.Book;
 using api.Mappers;
+using api.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace api.Controllers
 {
@@ -23,16 +25,17 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll(){
-            var books=_context.Book.ToList()
-            .Select(s => s.ToBookDto());;
-            return Ok(books);
+        public async Task<IActionResult> GetAll(){
+            var books = await _context.Book.ToListAsync();
+            var booksDto = books.Select(s => s.ToBookDto());
+            return Ok(booksDto);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] int id)
+        [HttpGet]
+        [Route("api/book/search/{id:int}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var book = _context.Book.Find(id);
+            var book = await _context.Book.FindAsync(id);
             if (book==null)
             {
                 return NotFound();
@@ -41,7 +44,6 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        
         public IActionResult Create([FromBody] CreateBookRequestDto bookDto)
         {
             var bookModel=bookDto.ToBookFromCreateDto();
@@ -52,9 +54,9 @@ namespace api.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] UpdateBookRequestDto updateDto)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateBookRequestDto updateDto)
         {
-            var bookModel=_context.Book.FirstOrDefault(x => x.Id == id);
+            var bookModel= await _context.Book.FirstOrDefaultAsync(x => x.Id == id);
 
             if (bookModel==null)
             {
@@ -73,7 +75,7 @@ namespace api.Controllers
             bookModel.pdf=updateDto.pdf;
             bookModel.docx=updateDto.docx;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(bookModel.ToBookDto());
 
@@ -81,9 +83,9 @@ namespace api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var bookModel = _context.Book.FirstOrDefault(x => x.Id == id);
+            var bookModel = await _context.Book.FirstOrDefaultAsync(x => x.Id == id);
 
             if(bookModel==null)
             {
@@ -92,7 +94,7 @@ namespace api.Controllers
 
             _context.Book.Remove(bookModel);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }

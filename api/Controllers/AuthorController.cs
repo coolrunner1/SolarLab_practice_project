@@ -23,16 +23,16 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll(){
-            var authors=_context.Author.ToList()
-            .Select(c => c.ToAuthorDto());
-            return Ok(authors);
+        public async Task<IActionResult> GetAll(){
+            var authors= await _context.Author.ToListAsync();
+            var authorsDto=authors.Select(c => c.ToAuthorDto());
+            return Ok(authorsDto);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var author = _context.Author.Find(id);
+            var author = await _context.Author.FindAsync(id);
             if (author==null)
             {
                 return NotFound();
@@ -42,11 +42,11 @@ namespace api.Controllers
 
         [HttpPost]
         
-        public IActionResult Create([FromBody] CreateAuthorRequestDto authorDto)
+        public async Task<IActionResult> Create([FromBody] CreateAuthorRequestDto authorDto)
         {
             var authorModel=authorDto.ToAuthorFromCreateDto();
             _context.Author.Add(authorModel);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new {id=authorModel.Id}, authorModel.ToAuthorDto());
         }
 
@@ -74,7 +74,7 @@ namespace api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var authorModel = _context.Author.FirstOrDefault(x => x.Id == id);
 
@@ -85,7 +85,7 @@ namespace api.Controllers
 
             _context.Author.Remove(authorModel);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
