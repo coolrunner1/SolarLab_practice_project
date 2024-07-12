@@ -19,6 +19,6 @@ namespace api.Models
         public string txt { get; set; } = string.Empty;
         public string pdf { get; set; } = string.Empty;
         public string docx { get; set; } = string.Empty;
-        public Author? Author {get; set;}
+        //public Author? Author {get; set;}
     }
 }

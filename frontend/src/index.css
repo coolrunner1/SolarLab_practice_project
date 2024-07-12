@@ -1,3 +1,169 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+	--theme-name: "light";
+	--dash-img-size: 50px;
+}
+
+:root.light {
+	--color-base-bg: rgb(240, 240, 240);
+	--color-base-text: rgb(18, 18, 18);
+	--svg-fill: #000000;
+	--right-container-color: #e2e8f0;
+	--header-color: #ffffff;
+	--theme-name: "light";
+	--search-bar-bg: #e2e8f0;
+	--input-color: #181818;
+	--sidebar-bg: #1992d4;
+	--project-color: #636363;
+	--github-icon: url(./images/github.svg);
+	--preview-icon: url(./images/eye-outline.svg);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+	  --theme-name: "dark";
+	}
+	
+}
+
+@media screen{
+	#main-container {
+	--sidebar-size: clamp(10px, 30%, 300px);
+	}
+	#dashboard-img + div {
+		--dash-text-width: clamp(0px, 10%, 50px);
+		--dash-text-padding: 10px;
+	}
+	#header{
+		--name-size: 120px;
+		--second-grid-size: clamp(30px, 10%, 45px) auto repeat(3, clamp(65px, 10%, 85px));
+	}
+	button{
+		--button-font-size: 16px;
+	}
+
+}
+
+@media screen and (max-width: 735px){
+	#main-container {
+	--sidebar-size: clamp(55px, 10%, 300px);
+	}
+	#dashboard-img + div {
+		--dash-text-width: 0%;
+		--dash-text-padding: 0;
+		position: absolute;
+		font-size: 0;
+	}
+	#dashboard{
+		color:#1992d4;
+		--dash-img-size: 40px;
+	}
+	#header{
+		--second-grid-size: auto repeat(3, clamp(65px, 10%, 85px));
+	}
+	#first-header{
+		--name-size: 0;
+	}
+	#first-header > div{
+		font-size: 0px;
+	}
+	#sidebar-icons > div{
+		font-size: 0px;
+	}
+	#avatar.second-avatar{
+		height: 0;
+		width: 0;
+		background-image: none;
+		position: absolute;
+	}
+	h2{
+		font-size: 13px;
+	}
+	h4{
+		font-size: 13px;
+	}
+	h5{
+		font-size: 12px;
+	}
+	button{
+		--button-font-size: 14px;
+	}
+
+}
+
+@media screen and (min-width: 1400px){
+	#projects-container{
+		--content-columns: repeat(3, 1fr);
+		--content-rows: repeat(5, 1fr);
+	}
+}
+
+
+:root.dark {
+	--color-base-bg: rgb(18, 18, 18);
+	--color-base-text: rgb(240, 240, 240);
+	--svg-fill: #ffffff;
+	--right-container-color: #232327;
+	--header-color: #181818;
+	--theme-name: "dark";
+	--search-bar-bg: #303134;
+	--input-color: rgb(240, 240, 240);
+	--sidebar-bg: #3882f6;
+	--project-color:#919191;
+	--github-icon: url(./images/github-dark.svg);
+	--preview-icon: url(./images/eye-outline-dark.svg);
+}
+  
+body {
+	background-color: var(--color-base-bg);
+	color: var(--color-base-text);
+	padding: 10px;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  }
+  
+  .container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  p {
+	font-size: 1.5rem;
+  }
+  
+  
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+div {
+	position: relative;
+    z-index: 99;
+}
+
+
+button, input {
+	display: flex;
+	justify-content: center;
+	padding: 10px 10px;
+	margin: 0 25px;
+	width: 100%;
+	/*max-width: 50px;*/
+	height: 50px;
+	color: var(--header-color);
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-weight: bolder;
+	font-size: var(--button-font-size);
+	background-color: transparent;
+	border-style: solid;
+	border-color: transparent;
+	border-radius: 10px;
+	margin: 0;
+	font-family: arial;
+}

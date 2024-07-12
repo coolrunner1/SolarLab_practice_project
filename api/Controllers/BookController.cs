@@ -43,6 +43,24 @@ namespace api.Controllers
             return Ok(book.ToBookDto());
         }
 
+        /*[HttpGet]
+        [Route("api/book/search/{bookName:string}")]
+        public async Task<IActionResult> GetByName([FromRoute] string bookName)
+        {
+            var books = from name in _context.Book select name;
+            if (!string.IsNullOrEmpty(bookName))
+            {
+                books = books.Where(s => s.Name.Contains(bookName));
+            }
+            else
+            {
+                return NotFound();
+            }
+            var books2 = new SelectList(await books.Distinct().ToListAsync());
+            return Ok(books);
+        }*/
+
+
         [HttpPost]
         public IActionResult Create([FromBody] CreateBookRequestDto bookDto)
         {
